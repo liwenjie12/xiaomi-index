@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/vue.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+    <div id="top-bar" class="top-box">
+       <!--顶部导航条 -->
+        <div class="top-container">
+        <top-list :list="navList" ></top-list>
+        <top-shop :shop="shopList"></top-shop>
+        <top-msg :msg="msgList"></top-msg>
+        <div class="clear"></div>
+        </div>
+    </div>
+    <script src="js/top.bar.js"></script>
+        <!--site-nav的布局-->
+    <div class="nav-container">
+        <div class="header-logo">
+            <a href="https://www.mi.com/index.html"></a>
+        </div>
+        <nav-list></nav-list>
+        <search-button></search-button>
+        <div class='clear'></div>
+    </div>
+    <script src="js/nav-container.js"></script>
+    <div class="img-show" @mouseover="stopPlay" @mouseout="continuePlay">
+        <img v-for="item in imgList" :src="item.path" :key="item.id" :style="item.index" class="shopimg" />
+        <category-list></category-list>
+        <left-btn @click.native.prevent="backPlay"></left-btn>
+        <right-btn @click.native="autoPlay"></right-btn>
+    </div>
+    <script src="js/img-show.js"></script>
+    <!--新品推荐******************************************************************-->
+    <div class="hot-image">
+        <business-list></business-list>
+        <div class="hot-image-box"><a class="hot-image-link"><img src="image/hot-image-3.jpg" /></a></div>
+        <div class="hot-image-box"><a class="hot-image-link"><img src="image/hot-image-2.jpg" /></a></div>
+        <div class="hot-image-box"><a class="hot-image-link"><img src="image/hot-image-1.jpg" /></a></div>
+        <div class="clear"></div>
+    </div>
+    <!--<script src="js/new-production.js"></script>-->
+    <div class="xiaomi-shangou" id="shangou">
+        <h2>小米闪购</h2>
+        <ul class="shangou-time">
+            <li>
+                <h3>12:00场</h3>
+                <img src="image/flash.png" />
+                <h3>距离结束还有</h3>
+                <div class="time-hour" v-text="hour"></div>
+                <div class="time-mark">:</div>
+                <div class="time-minute" v-text="min"></div>
+                <div class="time-mark">:</div>
+                <div class="time-second" v-text="sec"></div>
+            </li>
+        </ul>
+        <sg-list></sg-list>
+        <div class="shan-btn">
+            <a href="javascript:" @click='moveBack'><i class="iconfont icon-fanhui"></i></a>
+            <a href="javascript:" @click='moveTo'><i class="iconfont icon-gengduo"></i></a>
+        </div>
+    </div>
+    <script src="js/shop-list.js"></script>
+    <script src="js/new-production.js"></script>
+</body>
+</html>
